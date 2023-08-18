@@ -49,9 +49,9 @@ int ppercent(va_list list, int *counter)
 	a = ++*counter;
 	return (a);
 }
-int pdecimal(int i, int *count)
+int pdecint(va_list list, int *count)
 {
-	int a = *count, index = 0;
+	int a = *count, index = 0, i = va_arg(list, int);
 	char digits[10];
 
 	if (i < 0)

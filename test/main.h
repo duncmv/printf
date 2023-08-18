@@ -4,7 +4,7 @@
 int pchar(va_list, int *);
 int pstring(va_list, int *);
 int ppercent(va_list, int *);
-int pdecimal(int, int *);
+int pdecint(va_list, int *);
 int _putchar(char c);
 int _printf(const char *format, ...);
 /**

@@ -14,7 +14,9 @@ int _printf(const char *format, ...)
 	frmt arr[] = {
 		{"c", pchar},
 		{"s", pstring},
-		{"%", ppercent}
+		{"%", ppercent},
+		{"d", pdecint},
+		{"i", pdecint}
 	};
 
 	va_start(args, format);
@@ -24,13 +26,11 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			for (i = 0; i < 3; i++)
+			for (i = 0; i < 5; i++)
 			{
 				if (*format == arr[i].spec[0])
 					counter = arr[i].f(args, &counter);
 			}
-			if (*format == 'd' || *format == 'i')
-				counter = pdecimal(va_arg(args, int), &counter);
 			format++;
 		}
 		else
