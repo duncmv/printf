@@ -50,7 +50,9 @@ int ppercent(va_list list, int *counter)
 	return (a);
 }
 /**
- * pdecint - prints a %
+
+ * pdecint - prints a decimal/ int
+
  * @list: va_list of args
  * @counter: number of characters printed
  *
@@ -61,16 +63,24 @@ int pdecint(va_list list, int *counter)
 	int a = *counter, index = 0, i = va_arg(list, int);
 	char digits[10];
 
+	if (i == 0)
+	{
+		_putchar('0');
+		return (++a);
+	}
 	if (i < 0)
 	{
 		_putchar('-');
-		i = -i;
+		i = -i;/*removes the negative*/
+
 		a++;
 	}
 	while (i > 0)
 	{
-		digits[index] = i % 10;
-		i /= 10;
+
+		digits[index] = i % 10;/*gets last digit*/
+		i /= 10;/*removes last digit*/
+
 		index++;
 	}
 	a += index;

@@ -12,7 +12,7 @@ int main(void)
 	int len2;
 
 
-	len = _printf("Let's try to %% printf a simple sentence.\n");
+	len = 0;
 	len2 = printf("Let's try to %% printf a simple sentence.\n");
 	_printf("%d\n", len);
 	_printf("%d\n", len2);
