@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			for (i = 0; i < 2; i++)
 			{
 				if (*format == arr[i].spec[0])
-					arr[i].f(args, &counter);
+					counter = arr[i].f(args, &counter);
 			}
 			format++;
 		}
@@ -35,6 +35,7 @@ int _printf(const char *format, ...)
 		{
 			_putchar(*format);
 			counter++;
+			format++;
 		}
 	}
 	va_end(args);

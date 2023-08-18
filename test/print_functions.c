@@ -6,10 +6,13 @@
  *
  * Return: counter
  */
-void pchar(va_list list, int *counter)
+int pchar(va_list list, int *counter)
 {
+	int a;
+
 	_putchar(va_arg(list, int));
-	*counter++;
+	a = ++*counter;
+	return (a);
 }
 /**
  * pstring - prints a string
@@ -18,15 +21,18 @@ void pchar(va_list list, int *counter)
  *
  * Return: counter
  */
-void pstring(va_list list, int *counter)
+int pstring(va_list list, int *counter)
 {
+	int a;
 	char *p = va_arg(list, char *);
 
-	while (p)
+	while (*p != '\0')
 	{
-		_putchar(*p++);
-		*counter++;
+		_putchar((int)*p);
+		a = ++*counter;
+		p++;
 	}
+	return (a);
 }
 /**
  * ppercent - prints a %
@@ -35,9 +41,11 @@ void pstring(va_list list, int *counter)
  *
  * Return: counter
  */
-void ppercent(va_list list, int *counter)
+int ppercent(va_list list, int *counter)
 {
+	int a;
 	(void)list;
 	_putchar('%');
-	*counter++;
+	a = ++*counter;
+	return (a);
 }

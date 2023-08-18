@@ -1,6 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <stdarg.h>
+int pchar(va_list, int *);
+int pstring(va_list, int *);
+int ppercent(va_list, int *);
 int _putchar(char c);
 int _printf(const char *format, ...);
 /**
@@ -12,6 +15,6 @@ int _printf(const char *format, ...);
 typedef struct frmt
 {
 	char *spec;
-	void (*f)(va_list list, int *counter);
+	int (*f)(va_list list, int *counter);
 } frmt;
 #endif
