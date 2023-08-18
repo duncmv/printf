@@ -49,3 +49,31 @@ int ppercent(va_list list, int *counter)
 	a = ++*counter;
 	return (a);
 }
+int pdecimal(int i, int *count)
+{
+	int a = *count, index = 0;
+	char digits[10];
+
+	if (i < 0)
+	{
+		_putchar('-');
+		i = -i;
+		a++;
+	}
+	while ( i > 0)
+	{
+		digits[index] = i % 10;
+		i /= 10;
+		index++;
+	}
+	a += index;
+	index--;
+	
+	while (index >= 0)
+	{
+		_putchar(digits[index] + '0');
+		index--;
+	}
+
+	return (a);
+}

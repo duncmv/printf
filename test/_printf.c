@@ -29,6 +29,8 @@ int _printf(const char *format, ...)
 				if (*format == arr[i].spec[0])
 					counter = arr[i].f(args, &counter);
 			}
+			if (*format == 'd' || *format == 'i')
+				counter = pdecimal(va_arg(args, int), &counter);
 			format++;
 		}
 		else
@@ -41,4 +43,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (counter);
 }
-
