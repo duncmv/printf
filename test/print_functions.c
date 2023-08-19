@@ -87,61 +87,90 @@ int pdecint(va_list list, int *counter)
 /**
  * print_binary - It converts a number from base 10 to binary
  * @list: Its a list of arguments passed to this function
+ * @counter: number of characters printed
  * Return: It is the length of the number printed
  */
 int pbinary(va_list list, int *counter)
 {
-	unsigned int num;
-	int i, len;
-	char *str;
-	char *rev_str;
+	int f = 0;
+	int c = 0;
+	int i, a = 1, b;
+	unsigned int n = va_list(counter, unsigned int);
+	unsigned int p;
 
-	num = va_arg(list, unsigned int);
-	if (num == 0)
-		return (_write_char('0'));
-	if (num < 1)
-		return (-1);
-	len = base_len(num, 2);
-	str = malloc(sizeof(char) * len + 1);
-	if (str == NULL)
-		return (-1);
-
-	for (i = 0; num > 0; i++)
+	for (i = 0; i < 32; i++)
 	{
-		if (num % 2 == 0)
-			str[i] = '0';
-		else
-			str[i] = '1';
-		num = num / 2;
+		p = ((a << (31 - i)) & n);
+		if (p >> (31 - i))
+			f = 1;
+		if (f)
+		{
+			b = p >> (31 - i);
+			_putchar(b + 48);
+			c++;
+		}
 	}
-	str[i] = '\0';
-	rev_str = rev_string(str);
-	if (rev_str == NULL)
-		return (-1);
-	write_base(rev_str);
-	free(str);
-	free(rev_str);
-	return (len);
+	if (c == 0)
+	{
+		c++;
+		_putchar('0');
+	}
+	return (c);
 }
 /**
  * print_reversed - it calls a function to reverse and print a string
- * @arg: The argument passed to the function
+ * @list: list of args
+ * @counter: number of characters
  * Return: Amount of characters printed
  */
 int preversed(va_list list, int *counter)
 {
-	int len;
-	char *str;
-	char *ptr;
+	char *a = va_list(counter, char*);
+	int i;
+	int j = 0;
 
-	str = va_arg(arg, char *);
-	if (str == NULL)
-		return (-1);
-	ptr = rev_string(str);
-	if (ptr == NULL)
-		return (-1);
-	for (len = 0; ptr[len] != '\0'; len++)
-		_write_char(ptr[len]);
-	free(ptr);
-	return (len);
+	if (a == NULL)
+		a = "(null)";
+	while (a[j] != '\0')
+		j++;
+	for (i = j - 1; i >= 0; i--)
+		_putchar(s[i]);
+	return (j);
+}
+/**
+ * prot13 - prints str to ROT13 place.
+ * @counter: number of characters
+ * @list: va_list args
+ * Return: counter
+ *
+ */
+int prot13(va_list list, int *counter)
+{
+	int i, j, counter = 0;
+	int q = 0;
+	char *a = va_list(counter, char*);
+	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
+
+	if (a == NULL)
+		a = "(null)";
+	for (i = 0; s[i]; i++)
+	{
+		q = 0;
+		for (j = 0; alpha[j] && !q; j++)
+		{
+			if (a[i] == alpha[j])
+			{
+				_putchar(beta[j]);
+				counter++;
+				q = 1;
+			}
+		}
+		if (!q)
+		{
+			_putchar(a[i]);
+			counter++;
+		}
+	}
+	return (counter);
 }

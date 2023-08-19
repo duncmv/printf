@@ -19,6 +19,7 @@ int _printf(const char *format, ...)
 		{"i", pdecint},
 		{"b", pbinary},
 		{"r", preversed},
+		{"%R", prot13},
 	};
 
 	va_start(args, format);
