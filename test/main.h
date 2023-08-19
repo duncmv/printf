@@ -7,6 +7,8 @@ int ppercent(va_list, int *);
 int pdecint(va_list, int *);
 int _putchar(char c);
 int _printf(const char *format, ...);
+int pbinary(va_list, int *);
+int preversed(va_list, int *);
 /**
  * struct frmt - struct frmt
  *
