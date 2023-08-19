@@ -89,3 +89,171 @@ int pdecint(va_list list, int *counter)
 
 	return (a);
 }
+/**
+ * poctal - prints a number in octal notation
+ * @list: va_list of args
+ * @counter: number of characters printed
+ *
+ * Return: counter
+ */
+int poctal(va_list list, int *counter)
+{
+	int a = *counter, index = 0, i = va_arg(list, int);
+	char digits[11];
+
+	if (i == 0)
+	{
+		_putchar('0');
+		return (++a);
+	}
+	if (i < 0)
+	{
+		_putchar('-' + '0');
+		return (++a);
+		
+	}
+	while (i > 0)
+	{
+		digits[index] = i % 8;/*gets last digit*/
+		i /= 8;/*removes last digit*/
+		index++;
+	}
+	a += index;
+	index--;
+
+	while (index >= 0)
+	{
+		_putchar(digits[index] + '0');
+		index--;
+	}
+
+	return (a);
+}
+/**
+ * pudecint - prints an unsigned number 
+ * @list: va_list of args
+ * @counter: number of characters printed
+ *
+ * Return: counter
+ */
+int pudecint(va_list list, int *counter)
+{
+	int a = *counter, index = 0, i = va_arg(list, int);
+	char digits[10];
+
+	if (i == 0)
+	{
+		_putchar('0');
+		return (++a);
+	}
+	if (i < 0)
+	{
+		_putchar('-' + '0');
+		return (++a);
+	}
+	while (i > 0)
+	{
+		digits[index] = i % 10;/*gets last digit*/
+		i /= 10;/*removes last digit*/
+		index++;
+	}
+	a += index;
+	index--;
+
+	while (index >= 0)
+	{
+		_putchar(digits[index] + '0');
+		index--;
+	}
+
+	return (a);
+}
+/**
+ * phex - prints a number in hexadecimal notation
+ * @list: va_list of args
+ * @counter: number of characters printed
+ *
+ * Return: counter
+ */
+int phex(va_list list, int *counter)
+{
+	int a = *counter, index = 0, i = va_arg(list, int);
+	char hex[] = {"0123456789abcdef"};
+	int digits[8];
+
+	if (i == 0)
+	{
+		_putchar('0');
+		return (++a);
+	}
+	if (i < 0)
+	{
+		_putchar('-' + '0');
+		return (++a);
+		
+	}
+	while (i > 0)
+	{
+		digits[index] = i % 16;/*gets last digit*/
+		i /= 16;/*removes last digit*/
+		index++;
+	}
+	a += index;
+	index--;
+
+	while (index >= 0)
+	{
+		for (i = 0; i < 16; i++)
+		{
+			if (digits[index] == i)
+				_putchar(hex[i]);
+		}
+		index--;
+	}
+
+	return (a);
+}
+/**
+ * pHex - prints a number in hexadecimal notation
+ * @list: va_list of args
+ * @counter: number of characters printed
+ *
+ * Return: counter
+ */
+int pHex(va_list list, int *counter)
+{
+	int a = *counter, index = 0, i = va_arg(list, int);
+	char Hex[] = {"0123456789ABCDEF"};
+	int digits[8];
+
+	if (i == 0)
+	{
+		_putchar('0');
+		return (++a);
+	}
+	if (i < 0)
+	{
+		_putchar('-' + '0');
+		return (++a);
+		
+	}
+	while (i > 0)
+	{
+		digits[index] = i % 16;/*gets last digit*/
+		i /= 16;/*removes last digit*/
+		index++;
+	}
+	a += index;
+	index--;
+
+	while (index >= 0)
+	{
+		for (i = 0; i < 16; i++)
+		{
+			if (digits[index] == i)
+				_putchar(Hex[i]);
+		}
+		index--;
+	}
+	return (a);
+}
