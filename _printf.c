@@ -16,11 +16,12 @@ int _printf(const char *format, ...)
 		{"s", pstring},
 		{"%", ppercent},
 		{"d", pdecint},
-		{"i", pdecint},
+    {"i", pdecint},
 		{"o", poctal},
 		{"u", pudecint},
 		{"x", phex},
 		{"X", pHex}
+
 	};
 
 	va_start(args, format);
@@ -30,6 +31,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+
 			for (i = 0; i < 9; i++)
 			{
 				if (*format == arr[i].spec[0])
