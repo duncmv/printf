@@ -16,23 +16,23 @@ int _printf(const char *format, ...)
 		{"s", pstring},
 		{"%", ppercent},
 		{"d", pdecint},
-    {"i", pdecint},
+		{"i", pdecint},
 		{"o", poctal},
 		{"u", pudecint},
 		{"x", phex},
-		{"X", pHex}
-
+		{"X", pHex},
+		{"b", pbinary}
 	};
 
 	va_start(args, format);
 
-	while (*format)
+	while (format && *format)
 	{
 		if (*format == '%')
 		{
 			format++;
 
-			for (i = 0; i < 9; i++)
+			for (i = 0; i < 10; i++)
 			{
 				if (*format == arr[i].spec[0])
 					counter = arr[i].f(args, &counter);
