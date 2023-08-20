@@ -50,9 +50,7 @@ int ppercent(va_list list, int *counter)
 	return (a);
 }
 /**
-
  * pdecint - prints a decimal/ int
-
  * @list: va_list of args
  * @counter: number of characters printed
  *
@@ -103,19 +101,14 @@ int pdecint(va_list list, int *counter)
  */
 int poctal(va_list list, int *counter)
 {
-	int a = *counter, index = 0, i = va_arg(list, int);
+	int a = *counter, index = 0;
+	unsigned int i = va_arg(list, int);
 	char digits[11];
 
 	if (i == 0)
 	{
 		_putchar('0');
 		return (++a);
-	}
-	if (i < 0)
-	{
-		_putchar('-' + '0');
-		return (++a);
-		
 	}
 	while (i > 0)
 	{
@@ -143,17 +136,13 @@ int poctal(va_list list, int *counter)
  */
 int pudecint(va_list list, int *counter)
 {
-	int a = *counter, index = 0, i = va_arg(list, int);
+	int a = *counter, index = 0;
+	unsigned int i = va_arg(list, unsigned int);
 	char digits[10];
 
 	if (i == 0)
 	{
 		_putchar('0');
-		return (++a);
-	}
-	if (i < 0)
-	{
-		_putchar('-' + '0');
 		return (++a);
 	}
 	while (i > 0)
@@ -182,7 +171,8 @@ int pudecint(va_list list, int *counter)
  */
 int phex(va_list list, int *counter)
 {
-	int a = *counter, index = 0, i = va_arg(list, int);
+	int a = *counter, index = 0;
+	unsigned int i = va_arg(list, unsigned int);
 	char hex[] = {"0123456789abcdef"};
 	int digits[8];
 
@@ -190,12 +180,6 @@ int phex(va_list list, int *counter)
 	{
 		_putchar('0');
 		return (++a);
-	}
-	if (i < 0)
-	{
-		_putchar('-' + '0');
-		return (++a);
-		
 	}
 	while (i > 0)
 	{
@@ -227,7 +211,8 @@ int phex(va_list list, int *counter)
  */
 int pHex(va_list list, int *counter)
 {
-	int a = *counter, index = 0, i = va_arg(list, int);
+	int a = *counter, index = 0;
+	unsigned int i = va_arg(list, unsigned int);
 	char Hex[] = {"0123456789ABCDEF"};
 	int digits[8];
 
@@ -235,12 +220,6 @@ int pHex(va_list list, int *counter)
 	{
 		_putchar('0');
 		return (++a);
-	}
-	if (i < 0)
-	{
-		_putchar('-' + '0');
-		return (++a);
-		
 	}
 	while (i > 0)
 	{
@@ -258,6 +237,42 @@ int pHex(va_list list, int *counter)
 			if (digits[index] == i)
 				_putchar(Hex[i]);
 		}
+		index--;
+	}
+	return (a);
+}
+/**
+ * pbinary - prints a binary
+ * @list: va_list of args
+ * @counter: number of characters printed
+ *
+ * Return: counter
+ */
+int pbinary(va_list list, int *counter)
+{
+	int a = *counter, index = 0;
+	unsigned int i = va_arg(list, int);
+	char digits[31];
+
+	if (i == 0)
+	{
+		_putchar('0');
+		return (++a);
+	}
+	while (i > 0)
+	{
+
+		digits[index] = i % 2;/*gets last digit*/
+		i /= 2;/*removes last digit*/
+
+		index++;
+	}
+	a += index;
+	index--;
+
+	while (index >= 0)
+	{
+		_putchar(digits[index] + '0');
 		index--;
 	}
 	return (a);
