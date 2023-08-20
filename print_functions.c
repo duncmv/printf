@@ -174,7 +174,7 @@ int phex(va_list list, int *counter)
 	int a = *counter, index = 0;
 	unsigned int i = va_arg(list, unsigned int);
 	char hex[] = {"0123456789abcdef"};
-	int digits[8];
+	unsigned int digits[8];
 
 	if (i == 0)
 	{
@@ -214,7 +214,7 @@ int pHex(va_list list, int *counter)
 	int a = *counter, index = 0;
 	unsigned int i = va_arg(list, unsigned int);
 	char Hex[] = {"0123456789ABCDEF"};
-	int digits[8];
+	unsigned int digits[8];
 
 	if (i == 0)
 	{
