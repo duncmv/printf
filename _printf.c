@@ -25,20 +25,18 @@ int _printf(const char *format, ...)
 	};
 
 	va_start(args, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 
-	while (format && *format)
+	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-
-			if (*format)
+			for (i = 0; i < 11; i++)
 			{
-				for (i = 0; i < 11; i++)
-				{
-					if (*format == arr[i].spec[0])
-						counter = arr[i].f(args, &counter);
-				}
+				if (*format == arr[i].spec[0])
+					counter = arr[i].f(args, &counter);
 			}
 			format++;
 		}
