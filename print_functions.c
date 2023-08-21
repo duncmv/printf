@@ -10,7 +10,7 @@ int pchar(va_list list, int *counter)
 {
 	int a;
 
-	_putchar(va_arg(list, int));
+	_putchar((char)va_arg(list, int));
 	a = ++*counter;
 	return (a);
 }
@@ -26,9 +26,14 @@ int pstring(va_list list, int *counter)
 	int a;
 	char *p = va_arg(list, char *);
 
+	if (p == NULL)
+	{
+		p = "(null)";
+	}
+
 	while (*p != '\0')
 	{
-		_putchar((int)*p);
+		_putchar(*p);
 		a = ++*counter;
 		p++;
 	}
