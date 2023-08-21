@@ -290,7 +290,7 @@ int pbinary(va_list list, int *counter)
  */
 int prot13(va_list args, int *s)
 {
-	int l, m, counter = 0;
+	int l, m, counter = *s;
 	int p = 0;
 	char *u = va_arg(args, char*);
 	char alpha[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
