@@ -21,8 +21,7 @@ int _printf(const char *format, ...)
 		{"u", pudecint},
 		{"x", phex},
 		{"X", pHex},
-		{"b", pbinary},
-		{NULL, NULL}
+		{"b", pbinary}
 	};
 
 	va_start(args, format);
@@ -33,10 +32,13 @@ int _printf(const char *format, ...)
 		{
 			format++;
 
-			for (i = 0; i < 11; i++)
+			if (*format)
 			{
-				if (*format == arr[i].spec[0])
-					counter = arr[i].f(args, &counter);
+				for (i = 0; i < 11; i++)
+				{
+					if (*format == arr[i].spec[0])
+						counter = arr[i].f(args, &counter);
+				}
 			}
 			format++;
 		}
