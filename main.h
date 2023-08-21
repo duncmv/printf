@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
+#include <stdlib.h>
 #include <stdarg.h>
 int pchar(va_list, int *);
 int pstring(va_list, int *);
