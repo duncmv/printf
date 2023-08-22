@@ -45,6 +45,7 @@ int pspecial(va_list list, int *counter)
 	}
 	return (a);
 }
+/**
  * psrev - str in reverse
  * @args: allocated printf arguments
  *
