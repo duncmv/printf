@@ -13,6 +13,7 @@ int pbinary(va_list, int *);
 int phex(va_list, int *);
 int pHex(va_list, int *);
 int prot13(va_list, int *);
+int psrev(va_list, int *);
 int _putchar(char c);
 int _printf(const char *format, ...);
 /**
