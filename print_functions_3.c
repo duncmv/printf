@@ -15,7 +15,7 @@ int pspecial(va_list list, int *counter)
 	{
 		if ((p[i] > 0 && p[i] < 32) || p[i] >= 127)
 		{
-			tmp = p[i];
+			tmp = (int)p[i];
 			while (index < 2)
 			{
 				ar[index] = tmp %= 16;
@@ -33,7 +33,7 @@ int pspecial(va_list list, int *counter)
 					if (ar[index] == j)
 					_putchar(array[j]);
 				}
-				index--;
+				index -= 1;
 			}
 			a += 4;
 		}
