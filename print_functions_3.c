@@ -1,36 +1,48 @@
 #include "main.h"
 /**
- * ppointer - prints a pointer
- * @list; variable args list
+ * pspecial - prints special characters in hex
+ * @list: variable args list
  * @counter: counter variable
  * Return: a
  */
-int ppointer(va_list list, int *counter)
+int pspecial(va_list list, int *counter)
 {
-	long long int p = long long int(va_arg(list, void *));
-	int a, index = 0, i;
-	long long int arr[12];
-	char *array = "0123456789abcdef";
+	char *p = va_arg(list, char *);
+	int a = *counter, index = 0, tmp, i, j, ar[2];
+	char *array = "0123456789ABCDEF";
 
-	while (index < 12)
+	for (i = 0; p[i] != '\0'; i++)
 	{
-		arr[index] = p %= 16;
-		p /= 16;
-		index++;
-	}
-	_putchar('0');
-	_putchar('x');
-	index--;
-
-	while (index >= 0)
-	{
-		for (i = 0; i < 16; i++)
+		if ((p[i] > 0 && p[i] < 32) || p[i] >= 127)
 		{
-			if ((int)arr[index] == i)
-				putchar(array[i]);
+			tmp = p[i];
+			while (index < 2)
+			{
+				ar[index] = tmp %= 16;
+				tmp /= 16;
+				index++;
+			}
+			_putchar('\\');
+			_putchar('x');
+			index -= 1;
+			
+			while (index >= 0)
+			{
+				for (j = 0; j < 16; i++)
+				{
+					if (ar[index] == j)
+					_putchar(array[j]);
+				}
+				index--;
+			}
+			a += 4;
 		}
-		index--;
+		else
+		{
+			_putchar(p[i]);
+			a++;
+		}
 	}
-	a = *counter + 14;
+
 	return (a);
 }
