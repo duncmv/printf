@@ -11,9 +11,10 @@ int _printf(const char *format, ...)
 
 	va_list args;
 
-	frmt arr[] = {{"c", pchar},{"s", pstring},{"%", ppercent},
+	frmt arr[] = {{"c", pchar}, {"s", pstring}, {"%", ppercent},
 		{"d", pdecint},	{"i", pdecint},	{"o", poctal},
-		{"u", pudecint},{"x", phex},{"X", pHex},{"b", pbinary}, {"%R", prot13}
+		{"u", pudecint}, {"x", phex}, {"X", pHex}, {"b", pbinary},
+		{"R", prot13}
 	};
 
 	va_start(args, format);
