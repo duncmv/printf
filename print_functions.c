@@ -10,7 +10,7 @@ int pchar(va_list list, int *counter)
 {
 	int a;
 
-	_putchar((char)va_arg(list, int));
+	_putchar(va_arg(list, int));
 	a = ++*counter;
 	return (a);
 }
@@ -64,7 +64,7 @@ int ppercent(va_list list, int *counter)
 int pdecint(va_list list, int *counter)
 {
 	int a = *counter, index = 0, i = va_arg(list, int);
-	char digits[10];
+	int digits[10];
 
 	if (i == 0)
 	{
