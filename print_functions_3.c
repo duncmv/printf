@@ -8,13 +8,14 @@
 int psrev(va_list args, int *m)
 {
 	char *s = va_arg(args, char*);
-	int l, counter = *m;
+	int l = 0, counter = *m;
 
-	if (s == NULL)
-		s = "(null)";
-	while (s[counter] != '\0')
+	while (s[l] != '\0')
+	{
+		l++;
 		counter++;
-	for (l = counter - 1; l >= 0; l--)
+	}
+	for (l -= 1; l >= 0; l--)
 		_putchar(s[l]);
 	return (counter);
 }
