@@ -13,8 +13,8 @@ int _printf(const char *format, ...)
 
 	frmt arr[] = {{"c", pchar}, {"s", pstring}, {"%", ppercent},
 		{"d", pdecint},	{"i", pdecint},	{"o", poctal},
-		{"u", pudecint}, {"x", phex}, {"X", pHex}, {"b", pbinary},
-		{"R", prot13}
+		{"u", pudecint}, {"x", phex}, {"X", pHex},
+		{"b", pbinary}, {"p", ppointer}, {"R", prot13}
 	};
 
 	va_start(args, format);
@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			for (i = 0; i < 11; i++)
+			for (i = 0; i < 12; i++)
 			{
 				if (*format == arr[i].spec[0])
 					counter = arr[i].f(args, &counter);

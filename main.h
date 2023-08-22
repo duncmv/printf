@@ -4,6 +4,7 @@
 #include <stdarg.h>
 int pchar(va_list, int *);
 int pstring(va_list, int *);
+int ppointer(va_list, int *);
 int ppercent(va_list, int *);
 int pdecint(va_list, int *);
 int pudecint(va_list, int *);
