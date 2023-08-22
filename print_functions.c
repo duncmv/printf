@@ -282,3 +282,39 @@ int pbinary(va_list list, int *counter)
 	}
 	return (a);
 }
+/**
+ * prot13 - prints string
+ * @args: printf arguments
+ * Return: counter
+ *
+ */
+int prot13(va_list args, int *s)
+{
+	int l, m, counter = *s;
+	int p = 0;
+	char *u = va_arg(args, char*);
+	char alpha[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
+	char beta[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
+
+	if (u == NULL)
+		u = "(null)";
+	for (l = 0; s[l]; l++)
+	{
+		p = 0;
+		for (m = 0; alpha[m] && !p; m++)
+		{
+			if (u[l] == alpha[m])
+			{
+				_putchar(beta[m]);
+				counter++;
+				p = 1;
+			}
+		}
+		if (!p)
+		{
+			_putchar(u[l]);
+			counter++;
+		}
+	}
+	return (counter);
+}
