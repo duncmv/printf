@@ -25,7 +25,7 @@ int pspecial(va_list list, int *counter)
 			_putchar('\\');
 			_putchar('x');
 			index -= 1;
-			
+
 			while (index >= 0)
 			{
 				for (j = 0; j < 16; i++)
@@ -48,7 +48,7 @@ int pspecial(va_list list, int *counter)
 /**
  * psrev - str in reverse
  * @args: allocated printf arguments
- *
+ * @m: counter
  * Return: the string
  */
 int psrev(va_list args, int *m)
