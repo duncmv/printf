@@ -23,7 +23,7 @@ int pchar(va_list list, int *counter)
  */
 int pstring(va_list list, int *counter)
 {
-	int a;
+	int a = *counter;
 	char *p = va_arg(list, char *);
 
 	if (p == NULL)
