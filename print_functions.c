@@ -74,17 +74,22 @@ int pdecint(va_list list, int *counter)
 	if (i < 0)
 	{
 		_putchar('-');
-		i = -i;/*removes the negative*/
-
+		while (i < 0)
+		{
+			digits[index] = (i % 10) * -1;/*gets last digit*/
+			i /= 10;/*removes last digit*/
+			index++;
+		}
 		a++;
 	}
-	while (i > 0)
+	else
 	{
-
-		digits[index] = i % 10;/*gets last digit*/
-		i /= 10;/*removes last digit*/
-
-		index++;
+		while (i > 0)
+		{
+			digits[index] = i % 10;/*gets last digit*/
+			i /= 10;/*removes last digit*/
+			index++;
+		}
 	}
 	a += index;
 	index--;
