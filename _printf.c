@@ -29,9 +29,12 @@ int _printf(const char *format, ...)
 			for (i = 0; i < 13; i++)
 			{
 				if (*format == arr[i].spec[0])
+				{
 					counter = arr[i].f(args, &counter);
+					break;
+				}
 			}
-			if (*format == 0 || *format == 92 || (*format > 6 && *format < 14))
+			if (i == 13)
 			{
 				counter = arr[2].f(args, &counter);
 				format--;
